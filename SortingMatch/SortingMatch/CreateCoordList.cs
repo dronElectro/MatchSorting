@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Deployment.Internal;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +11,17 @@ namespace SortingMatch
 {
     class CreateCoordList
     {
-        public int[,] Coords { get; set; }
-        public int max=0;
+        
+        public long[,] Coords { get; set; }
+        public long max{ get; set; }
         CreateListOfSortings listOfSorts;
         RandomArrayGenerator randArray;
         public CreateCoordList(bool[] numOfSorts, int[] numOfCells)
         {
-            Coords = new int[numOfSorts.Length, numOfCells.Length];
+            max = 0;
+            Coords = new long[numOfSorts.Length, numOfCells.Length];
             listOfSorts = new CreateListOfSortings(numOfSorts);
+
             for (int i=0;i< numOfCells.Length;i++)
             {
                 if (numOfCells[i]!=0)
@@ -27,16 +31,13 @@ namespace SortingMatch
                     {
                         if(listOfSorts.Sorts[j]!=null)
                         {
-                            listOfSorts.Sorts[j].NotSortedArray = randArray.NotSortedArray;
-                            listOfSorts.Sorts[j].N = randArray.NotSortedArray.Length;
-                            Coords[j, i] = (int)(listOfSorts.Sorts[j].timeToSort());
-                            MessageBox.Show(listOfSorts.Sorts[j].Name + " " + Coords[j, i].ToString());
-                            if (Coords[j, i] > max) max = Coords[j, i];
+                            listOfSorts.Sorts[j].newArray(randArray.NotSortedArray, randArray.NotSortedArray.Length);
+                            Coords[j, i] = listOfSorts.Sorts[j].timeToSort();
+                            if (Coords[j, i] > max)
+                                max = Coords[j, i];
                         }
                     }
-                }
-
-                    
+                }   
             }
         }
     }

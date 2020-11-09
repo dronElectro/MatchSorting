@@ -40,10 +40,21 @@ namespace SortingMatch
         {
             Name = "Comb";
         }
-        public double timeToSort()
+
+        public void newArray(int[] arr, int n)
         {
-            Stopwatch stopwatchComb = new Stopwatch();
-            stopwatchComb.Start();
+            N = n;
+            NotSortedArray = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                NotSortedArray[i] = arr[i];
+            }
+        }
+
+        public long timeToSort()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             int temp = 0;
             double k = 1.247;
             double step = N - 1;
@@ -74,8 +85,8 @@ namespace SortingMatch
                         NotSortedArray[j] = temp;
                     }
                 }
-            stopwatchComb.Stop();
-            return stopwatchComb.ElapsedTicks;
+            stopwatch.Stop();
+            return stopwatch.ElapsedTicks;
         }
     }
 }

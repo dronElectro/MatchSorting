@@ -123,7 +123,7 @@
             listViewItem7});
             this.ListNumOfCells.Location = new System.Drawing.Point(16, 497);
             this.ListNumOfCells.Name = "ListNumOfCells";
-            this.ListNumOfCells.Size = new System.Drawing.Size(520, 25);
+            this.ListNumOfCells.Size = new System.Drawing.Size(619, 25);
             this.ListNumOfCells.TabIndex = 14;
             this.ListNumOfCells.UseCompatibleStateImageBehavior = false;
             this.ListNumOfCells.View = System.Windows.Forms.View.List;

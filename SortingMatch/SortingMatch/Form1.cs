@@ -23,7 +23,9 @@ namespace SortingMatch
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            SortingMatchGraphicsPB.Refresh();
+            SortingMatchGraphicsPB.Controls.Clear();
+            //SortingMatchGraphicsPB.Visible = false;
+            //SortingMatchGraphicsPB.Visible = true;
             numOfSorts = new bool[ListOfSorts.Items.Count];
             numOfCells = new int[ListNumOfCells.Items.Count];
             Style style = new Style(numOfSorts.Length);
@@ -40,23 +42,25 @@ namespace SortingMatch
             for (int i=0;i<ListNumOfCells.Items.Count;i++)
             {
                 if (ListNumOfCells.Items[i].Checked)
+                {
                     numOfCells[i] = Convert.ToInt32(ListNumOfCells.Items[i].Text);
+                }
+
                 else
                     numOfCells[i] = 0;
             }
             CreateCoordList coordList = new CreateCoordList(numOfSorts, numOfCells);
-            int[,] coords = coordList.Coords;
-            for(int i = 0; i < numOfSorts.Length; i++)
+            long[,] coords = coordList.Coords;
+            Console.Write("Массив значений - кол-во ячеек массива по горизонтали/метод сортировки по вертикали");
+            Console.WriteLine();
+            for (int i = 0; i < numOfSorts.Length; i++)
             {
-                for (int j = 0; j < numOfCells.Length; j++)
-                    Console.Write(String.Format("{0,20}", coords[i, j]));
-                Console.WriteLine();
+               for (int j = 0; j < numOfCells.Length; j++)
+                    Console.Write(String.Format("{0,20}", coords[i,j]));
+               Console.WriteLine();
             }
             Console.WriteLine();
-            Console.WriteLine();
-
-
-            DrawGraphics drawGraphics = new DrawGraphics(coords, numOfSorts, numOfCells, style, SortingMatchGraphicsPB);
+            DrawGraphics drawGraphics = new DrawGraphics(coords, coordList.max, numOfSorts, numOfCells, style, SortingMatchGraphicsPB);
         }
 
 

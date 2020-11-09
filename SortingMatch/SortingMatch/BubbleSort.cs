@@ -39,18 +39,20 @@ namespace SortingMatch
         public BubbleSort() {
             Name = "Bubble";
         }
-        public double timeToSort()
-        {
-            Console.Write("старт бабл" + N.ToString());
-            for (int h = 0; h < NotSortedArray.Length; h++)
-            {
-                Console.Write("{0,4}", NotSortedArray[h]);
-            }
-            Console.Write("финиш бабл ");
-            Console.WriteLine();
 
-            Stopwatch stopwatchBub = new Stopwatch();
-            stopwatchBub.Start();
+        public void newArray(int[] arr, int n)
+        {
+            N = n;
+            NotSortedArray = new int[n];
+            for (int i=0;i<n;i++)
+            {
+                NotSortedArray[i] = arr[i];
+            }
+        }
+        public long timeToSort()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             int temp = 0;
 
             for(int i=0;i<N;i++)
@@ -63,7 +65,8 @@ namespace SortingMatch
                         NotSortedArray[j] = temp;
                     }
                 }
-            return stopwatchBub.ElapsedTicks;
+            stopwatch.Stop();
+            return stopwatch.ElapsedTicks;
         }
     }
 }

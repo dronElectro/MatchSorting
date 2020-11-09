@@ -39,20 +39,30 @@ namespace SortingMatch
         {
             Name = "Shaiker";
         }
-        public double timeToSort()
+
+        public void newArray(int[] arr, int n)
         {
-            
-            Stopwatch stopwatchSh = new Stopwatch();
-            stopwatchSh.Start();
+            N = n;
+            NotSortedArray = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                NotSortedArray[i] = arr[i];
+            }
+        }
+
+        public long timeToSort()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             int temp = 0;
-            int start = -1, end = N - 1;
+            int start = 0, end = N - 1;
             bool sorting = true;
-            while (true)
+
+            while (sorting)
             {
                 sorting = false;
-                start++;
-
-                for (int j = start; j < end; j++)
+                for (int j = start; j < end-1; j++)
                 {
                     if (NotSortedArray[j] > NotSortedArray[j + 1])
                     {
@@ -62,8 +72,6 @@ namespace SortingMatch
                         sorting = true;
                     }
                 }
-                if (!sorting)
-                    break;
                 end--;
                 for (int j = end; j > start; j--)
                 {
@@ -75,9 +83,10 @@ namespace SortingMatch
                         sorting = true;
                     }
                 }
+                start++;
             }
-            stopwatchSh.Stop();
-            return stopwatchSh.ElapsedTicks;
+            stopwatch.Stop();
+            return stopwatch.ElapsedTicks;
         }
     }
 }

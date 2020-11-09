@@ -12,31 +12,63 @@ namespace SortingMatch
     class DrawGraphics
     {
         Graphics graphics;
-        Pen pen;
-        public DrawGraphics(int[,] coords, bool[] numOfSorts, int[] numOfCells, Style styles, System.Windows.Forms.PictureBox e)
+        Pen pen = new Pen(Color.Black,1);
+        SolidBrush brush;
+        public DrawGraphics(long[,] coords, long maxValue, bool[] numOfSorts, int[] numOfCells, Style styles, System.Windows.Forms.PictureBox e)
         {
+
+            long[,] min = new long[4, numOfCells.Length];// min i x y
+            int height = e.Height;
+            int width = e.Width;
+            double kHeight = maxValue / (height - 40);
             graphics = e.CreateGraphics();
-            int x = 0, y = 0;
-            for (int i=0;i< numOfSorts.Length;i++)
+            long x = 0, y = 0, x1=0,y1=0;
+
+            for (int i = 0; i < numOfSorts.Length; i++)
             {
+
                 if (numOfSorts[i] == false) continue;
-                pen = new Pen(styles.color[i], 1);
+                pen.Color = styles.color[i];
                 bool frstCoord = true;
-                for (int j=0;j< numOfCells.Length; j++)
+                double kWidth = (width - 10) / numOfCells.Length;
+                x = Convert.ToInt64(kWidth/2);
+                y = 0;
+                int cntSteps = 0;
+
+                for (int j = 0; j < numOfCells.Length; j++)
                 {
-                    if(frstCoord)
+                    if (numOfCells[j] == 0)
                     {
-                        x = numOfCells[j];
-                        y = coords[i, j];
-                        frstCoord = false;
+                        x += Convert.ToInt64(kWidth);
+                        cntSteps++;
                         continue;
                     }
-                    if (numOfCells[i] == 0) continue;
-                    graphics.DrawLine(pen, x, y, numOfCells[j]/100, coords[i, j]);
-                    x = numOfCells[j];
-                    y = coords[i, j];
+                    MessageBox.Show("!");
+                    if (min[0, j]==0 || (coords[i, j] < min[0, j] && coords[i, j] != 0))
+                    {
+                        min[0, j] = coords[i, j];
+                        min[1, j] = i;
+                        if(frstCoord) min[2, j] = x;
+                        else  min[2, j] = x + Convert.ToInt64(kWidth);
+                        min[3, j] = Convert.ToInt64(height - coords[i, j] / kHeight);
+                    }
+
+                    if (frstCoord)
+                    {
+                        y = Convert.ToInt64(height - coords[i, j] / kHeight);
+                        frstCoord = false;
+                        brush = new SolidBrush(styles.color[i]);
+                        graphics.FillEllipse(brush, x, y, 3, 3);
+                        continue;
+                    }
+                    x1 = x+Convert.ToInt64(kWidth);
+                    y1 = Convert.ToInt64(height - coords[i, j] /kHeight);
+                    graphics.DrawLine(pen, x, y, x1, y1);
+                    x = x1;
+                    y = y1;
                 }
             }
+            ShowLabel showLabel = new ShowLabel(min, numOfCells.Length, styles, e);
         }
     }
 }

@@ -13,7 +13,8 @@ namespace SortingMatch
         string Name { get; set; }
         int[] NotSortedArray { get; set; }
         int N { get; set; }
-        double timeToSort();
+        long timeToSort();
 
+        void newArray(int[] arr, int n);
     }
 }
