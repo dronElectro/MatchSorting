@@ -8,3 +8,13 @@ C:\Users\Andrey\source\repos\SortingMatch\SortingMatch\obj\Debug\SortingMatch.cs
 C:\Users\Andrey\source\repos\SortingMatch\SortingMatch\obj\Debug\SortingMatch.csproj.CoreCompileInputs.cache
 C:\Users\Andrey\source\repos\SortingMatch\SortingMatch\obj\Debug\SortingMatch.exe
 C:\Users\Andrey\source\repos\SortingMatch\SortingMatch\obj\Debug\SortingMatch.pdb
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\bin\Debug\SortingMatch.exe.config
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\bin\Debug\SortingMatch.exe
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\bin\Debug\SortingMatch.pdb
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.csprojAssemblyReference.cache
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.Form1.resources
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.Properties.Resources.resources
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.csproj.GenerateResource.cache
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.csproj.CoreCompileInputs.cache
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.exe
+C:\Users\Andrey\Documents\GitHub\MatchSorting\SortingMatch\SortingMatch\obj\Debug\SortingMatch.pdb

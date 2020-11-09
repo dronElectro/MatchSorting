@@ -39,34 +39,36 @@ namespace SortingMatch
                 {
                     if (numOfCells[j] == 0)
                     {
-                        x += Convert.ToInt64(kWidth);
                         cntSteps++;
                         continue;
                     }
-                    MessageBox.Show("!");
-                    if (min[0, j]==0 || (coords[i, j] < min[0, j] && coords[i, j] != 0))
+
+                    if (min[0, j] == 0 || (coords[i, j] < min[0, j] && coords[i, j] != 0))
                     {
                         min[0, j] = coords[i, j];
                         min[1, j] = i;
-                        if(frstCoord) min[2, j] = x;
-                        else  min[2, j] = x + Convert.ToInt64(kWidth);
+                        if (frstCoord) min[2, j] = x;
+                        else min[2, j] = x + Convert.ToInt64(kWidth) * cntSteps;
                         min[3, j] = Convert.ToInt64(height - coords[i, j] / kHeight);
                     }
 
                     if (frstCoord)
                     {
-                        y = Convert.ToInt64(height - coords[i, j] / kHeight);
                         frstCoord = false;
+                        x += Convert.ToInt64(kWidth) * cntSteps;
+                        y = Convert.ToInt64(height - coords[i, j] / kHeight);
                         brush = new SolidBrush(styles.color[i]);
                         graphics.FillEllipse(brush, x, y, 3, 3);
+                        cntSteps = 1;
                         continue;
                     }
-                    x1 = x+Convert.ToInt64(kWidth);
-                    y1 = Convert.ToInt64(height - coords[i, j] /kHeight);
+                    x1 = x + Convert.ToInt64(kWidth) * cntSteps;
+                    y1 = Convert.ToInt64(height - coords[i, j] / kHeight);
                     graphics.DrawLine(pen, x, y, x1, y1);
                     x = x1;
                     y = y1;
                 }
+
             }
             ShowLabel showLabel = new ShowLabel(min, numOfCells.Length, styles, e);
         }

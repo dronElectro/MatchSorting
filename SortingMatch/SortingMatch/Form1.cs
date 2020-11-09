@@ -24,8 +24,7 @@ namespace SortingMatch
         private void StartButton_Click(object sender, EventArgs e)
         {
             SortingMatchGraphicsPB.Controls.Clear();
-            //SortingMatchGraphicsPB.Visible = false;
-            //SortingMatchGraphicsPB.Visible = true;
+            SortingMatchGraphicsPB.Refresh();
             numOfSorts = new bool[ListOfSorts.Items.Count];
             numOfCells = new int[ListNumOfCells.Items.Count];
             Style style = new Style(numOfSorts.Length);
