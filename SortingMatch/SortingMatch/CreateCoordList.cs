@@ -39,6 +39,21 @@ namespace SortingMatch
                     }
                 }   
             }
+
+            Console.WriteLine();
+            Console.Write("Массив значений - кол-во ячеек массива по горизонтали/метод сортировки по вертикали");
+            Console.WriteLine();
+            for (int i = 0; i < numOfSorts.Length; i++)
+            {
+                if (listOfSorts.Sorts[i]!=null)
+                    Console.Write(listOfSorts.Sorts[i].Name + "\t");
+                else Console.Write(" \t");
+                for (int j = 0; j < numOfCells.Length; j++)
+                    Console.Write(String.Format("{0,20}", Coords[i, j]));
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
         }
     }
 }

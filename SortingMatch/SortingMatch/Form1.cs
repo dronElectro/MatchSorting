@@ -50,15 +50,6 @@ namespace SortingMatch
             }
             CreateCoordList coordList = new CreateCoordList(numOfSorts, numOfCells);
             long[,] coords = coordList.Coords;
-            Console.Write("Массив значений - кол-во ячеек массива по горизонтали/метод сортировки по вертикали");
-            Console.WriteLine();
-            for (int i = 0; i < numOfSorts.Length; i++)
-            {
-               for (int j = 0; j < numOfCells.Length; j++)
-                    Console.Write(String.Format("{0,20}", coords[i,j]));
-               Console.WriteLine();
-            }
-            Console.WriteLine();
             DrawGraphics drawGraphics = new DrawGraphics(coords, coordList.max, numOfSorts, numOfCells, style, SortingMatchGraphicsPB);
         }
 
